@@ -38,13 +38,14 @@
             </div>
 
             <div class="search-contact">
-                <i @click="filteredContacts" class="fas fa-search"></i>
-                <input type="text" v-model='search'  @keyup.enter="filteredContacts"  placeholder="" >
+                <i class="fas fa-search"></i>
+                <input type="text" v-model='search'    placeholder="" >
             </div>
             <div class="contact-list">
                 <ul>
-                    
-                     <li class="chat-preview" v-for='(items,index) in contacts' @click='chooseChat(index)'>
+                   
+                     <li class="chat-preview" v-if="items.name.toLowerCase().includes(search) "
+                      v-for='(items,index) in contacts' @click='chooseChat(index)'>
                         <img v-bind:src="items.avatar"></img>
                         <span class="minicont">
                             <span class="name">{{items.name}}</span>

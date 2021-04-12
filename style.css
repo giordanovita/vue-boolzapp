@@ -71,10 +71,7 @@ header{
     margin-left: 10px;
 }
 
-.my-profile h3{
-    margin-right: 35px;
-}
-
+ 
 .my-profile ul{
     text-align: right;
 
@@ -259,7 +256,7 @@ header{
 }
 
 .intro{
-    width: 100%;
+    width: 75%;
     height: 100%;
     z-index: 999;
     background-color: rgb(37, 45, 48);

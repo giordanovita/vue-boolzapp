@@ -97,9 +97,7 @@ function boolZapp(){
                     'myMsgs':'',
                     'sendMessages':[],
                     'msg': '',
-                    'filtered':[],
                     'search':'',
-                    'finded':'',
                     'convcontent':false,
                     'intro':true
                     
@@ -107,29 +105,12 @@ function boolZapp(){
 
                
             methods:{
-
-                 filteredContacts() {
-                    let target = this.search.toLowerCase();
-                
-                    for (let i = 0; i < this.contacts.length; i++) {
-                       
-                        if(this.contacts[i].name.toLowerCase().includes(target) &&
-                        (!this.filtered.includes(this.contacts[i]))){
-                                this.filtered.push(this.contacts[i]);
-                                
-                                return this.filtered, this.search='';
-                            }
-                    }
-                }, 
-
-              
                  chooseChat:function(index){
                      this.convcontent=true;
                      this.intro=false;
-                    this.selectedChat=index;
-                    console.log(index)
-                     this.nameSelected  = this.contacts[index].name
-                     this.avatarSelected = this.contacts[index].avatar
+                     this.selectedChat=index;
+                     this.nameSelected  = this.contacts[index].name;
+                     this.avatarSelected = this.contacts[index].avatar;
 
                      const contact = this.contacts[index];
                     const contactMsgs = contact['messages']
@@ -137,8 +118,6 @@ function boolZapp(){
  
                     for(i=0; i<contactMsgs.length; i++){
                         const contactMess = contactMsgs[i];
-
-
                     } 
                   
                  }, 
@@ -147,9 +126,9 @@ function boolZapp(){
                     let moment = new Date();
                     let date = `${moment.getDate()}/${('0'+moment.getMonth() + 1)}/${moment.getFullYear().toString().slice(2)}`;  
                     let minutes = moment.getMinutes();
-                        if(minutes.length<2){
+                         if(minutes.length<2){
                             return minutes= minutes+'0'
-                        }
+                        } 
                         console.log(minutes)
                     let hours = `${moment.getHours()}:${minutes}`;
     
@@ -174,7 +153,7 @@ function boolZapp(){
                     let date = `${moment.getDate()}/${'0'+(moment.getMonth() + 1)}/${moment.getFullYear().toString().slice(2)}`;  
                     let minutes = moment.getMinutes();
                         if(minutes.length<2){
-                            return minutes= minutes+'0'
+                            return minutes= minutes+'0';
                         }
                         console.log(minutes)
                     let hours = `${moment.getHours()}:${minutes}`;
