@@ -1,0 +1,255 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+body{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+    
+}
+
+header{
+    width: 100%;
+    height: 10%;
+    background: rgb(0, 191, 165);
+}
+
+.sub-container{
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(19, 27, 34);
+
+}
+
+
+.right-side{
+    width: 75%;
+    height: 100%;
+    background-color: rgb(230, 222, 219);
+    padding: 15px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.left-side{
+    width: 35%;
+    height: 100%;
+    border-right: 1px solid darkgrey;
+    padding: 15px;  /* prova */
+
+
+}
+
+.my-profile {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(42, 46, 49);
+
+    
+
+}
+
+.my-profile img, .chat-preview img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.my-profile ul{
+    text-align: right;
+
+}
+
+.my-profile ul li{
+    display: inline-block;
+    margin: 0 5px;
+
+}
+
+.my-profile i{
+    color: rgb(110, 110, 110);
+    padding: 0 8px;
+}
+
+.notify{
+    background-color: rgb(19, 27, 34);
+
+    font-size: 23px;
+    padding: 20px 0;
+}
+
+.search-contact{
+    position: relative;
+    background-color: rgb(19, 27, 34);
+
+}
+
+.search-contact i{
+    position: absolute;
+    font-size: 25px;
+    top: 10px;
+    left: 10px;
+}
+
+.search-contact input{
+    height: 45px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 18px;
+    padding: 0 10px 0 50px;
+    margin-bottom: 10px;
+    background-color: rgb(48, 54, 57);
+
+
+}
+
+.contact-list{
+    height: calc(100% - 180px);
+    overflow-y:auto;
+    background-color: rgb(19, 27, 34);
+
+}
+
+.chat-preview:hover{
+    background:rgb(246, 246, 246);
+}
+
+.contact-list ul {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid darkgrey;
+
+
+
+}
+
+.chat-preview{
+    height: 60px;
+    margin:10px 0;
+    font-size: 18px;
+    border-bottom: 1px solid darkgrey;
+    display:flex;
+
+    /* background-color: rgb(254, 254, 254); */
+}
+
+
+.minicont{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    white-space: nowrap;
+    
+}
+.name{
+    font-weight: bold;
+    color: rgb(35, 35, 35);
+}
+
+.message{
+    color: rgb(135, 135, 135);
+    width: 263px;    /* da rivedere!!!!!!!!!!!!! */
+}
+
+.up-band{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: rgb(42, 46, 49);
+    
+}
+
+.douwn-band{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: rgb(42, 46, 49);   
+    justify-self: flex-end;
+    align-items:center;
+  
+}
+
+.douwn-band i{
+    font-size: 30px;
+    padding: 0 20px;
+    color: rgb(138, 136, 135)
+
+}
+
+.douwn-band input{
+    flex-grow: 1;
+    height: 70%;
+    font-size: 20px;
+    padding:  10px 20px;
+    border-radius: 25px;
+}
+
+.conv{
+    height: calc(100% - 140px);
+    width: 100%;
+    overflow-y: auto;
+    background: url('http://forums.crackberry.com/attachments/blackberry-10-wallpapers-f308/137432d1361639896t-z10-wallpaper-set-z10-music.jpg');
+/*     background-image: url(img/bg-conv.jpg);
+ */}
+
+.message-conv {
+    float: left;
+    color: #000000;
+    font-weight:600;
+    font-size:12px;
+    margin:10px 0;
+    width: 100%; 
+    padding: 10px 20px;
+
+  }
+.message-chat{
+    background:rgb(246, 246, 246);
+    border-radius:  10px  10px 10px 0;
+    padding: 8px;
+    display: inline-flex;
+ 
+}
+    
+  
+  .sent{
+      float: right;
+      border-radius: 10px   10px 0 10px;
+      background:rgb(192, 241, 153);
+  }
+
+  
+
+  .date-chat{
+    color: rgb(135, 135, 135);
+    font-size: 11px;
+    font-weight: bold;
+    margin: 11px 1px 0 0 ;
+    padding-top: 6px;
+}
+
+.date{
+    color: rgb(135, 135, 135);
+    font-size: 11px;
+    font-weight: bold;
+    align-self: end;
+
+}
+  
+
+  

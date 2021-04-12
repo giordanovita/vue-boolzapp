@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet"> 
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+    <!-- VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="utf-8"></script>
+    <title>Boolzapp</title>
+</head>
+<body>
+    <div id="app" class="container">
+     <header></header>
+       <div class="sub-container">
+        <div class="left-side">
+            <div class="my-profile">
+                <img src="img/profileimg.jpg" alt=""><!-- immagine del profilo -->
+                <ul>
+                    <li><i class="fas fa-circle-notch"></i></li>
+                    <li><i class="fas fa-comment-alt"></i></li>
+                    <li><i class="fas fa-ellipsis-v"></i></li>
+                </ul>
+            </div>
+
+            <div class="notify">
+                <!-- sezione ricevi notifiche nuovo messaggio -->
+                <i class="far fa-bell-slash"></i>
+                <span>Get notified of new messages</span>
+            </div>
+
+            <div class="search-contact">
+                <i @click="filteredContacts(search)" class="fas fa-search"></i>
+                <input type="text" v-model='search'  @keyup.enter="filteredContacts(search)"  placeholder="" >
+            </div>
+            <div class="contact-list">
+                <ul>
+                    
+                     <li class="chat-preview" v-for='(items,index) in contacts' @click='chooseChat(index)'>
+                        <img v-bind:src="items.avatar"></img>
+                        <span class="minicont">
+                            <span class="name">{{items.name}}</span>
+                            <span class="message" >
+                                {{items.messages[items.messages.length -1].text.slice(0, 25)}}
+                                
+                                <span v-if="items.messages[items.messages.length -1].text.length > 20">...</span>
+                            </span>
+                            <span  class="date">{{(items.messages[(items.messages.length)-1].hours)||(items.messages[0].date.slice(0,5))}}</span> 
+
+                           </span> 
+                            
+
+
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="right-side">
+            <div class="up-band">
+                <ul>
+                    <li class="chat-preview" v-for='(items,index) in contacts' @click='chooseChat(index)'>
+                        <img v-bind:src="avatarSelected"></img>
+                        <span class="minicont">
+                          <span class="name">{{nameSelected}}</span>
+                             <span class="date">{{[items.messages.length].date}}</span> 
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="conv">
+
+                <span class="message-conv"  v-for="elem in contacts[selectedChat].messages " >
+                    <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
+                        <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}}</span>
+                    </span>
+                    <span class="message-chat" v-else>{{elem.text}}
+                         <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}} </span>
+
+                    </span>
+                    
+                 </span>
+                 
+                
+                
+
+
+
+                
+
+                
+            </div>
+            <div class="douwn-band">
+                <i   class="far fa-grin-alt"></i>
+                <input v-model='myMsgs' @keyup.enter="enterMsgs(selectedChat)" type="text">
+                <i @click='enterMsgs(selectedChat)'  class="fas fa-microphone"></i>
+            </div>
+
+            
+
+        </div>
+            
+
+            </div>
+      </div>
+
+
+
+    </div>
+    
+</body>
+</html>
+
+
