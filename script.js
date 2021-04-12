@@ -99,33 +99,47 @@ function boolZapp(){
                     'msg': '',
                     'filtered':[],
                     'search':'',
-                    'finded':''
+                    'finded':'',
+                    'convcontent':false,
+                    'intro':true
                     
                 },
 
                
             methods:{
 
-               
+                 filteredContacts() {
+                    let target = this.search.toLowerCase();
+                
+                    for (let i = 0; i < this.contacts.length; i++) {
+                       
+                        if(this.contacts[i].name.toLowerCase().includes(target) &&
+                        (!this.filtered.includes(this.contacts[i]))){
+                                this.filtered.push(this.contacts[i]);
+                                
+                                return this.filtered, this.search='';
+                            }
+                    }
+                }, 
 
               
                  chooseChat:function(index){
+                     this.convcontent=true;
+                     this.intro=false;
                     this.selectedChat=index;
                     console.log(index)
                      this.nameSelected  = this.contacts[index].name
                      this.avatarSelected = this.contacts[index].avatar
 
                      const contact = this.contacts[index];
-                     const contactMsgs = contact['messages']
+                    const contactMsgs = contact['messages']
                      let contactMsgsValue = contactMsgs.status;
-
+ 
                     for(i=0; i<contactMsgs.length; i++){
                         const contactMess = contactMsgs[i];
 
 
                     } 
-      //--------     
-                    
                   
                  }, 
                   autoAnswer: function (index) {
@@ -151,7 +165,7 @@ function boolZapp(){
                         setTimeout(function(index){
                             intervalTool.push({date, hours,text, status});
                             console.log( getRandomAnswer,text)
-                         },3000) 
+                         },1500) 
                     }
                 }, 
 
@@ -168,42 +182,16 @@ function boolZapp(){
                     let text = this.myMsgs;
                     let status = 'sent';
     
-                    if(this.myMsgs.length > 0){
-                        this.contacts[index].messages.push({date, hours, text, status});
-                        this.myMsgs = '';
-                    }
-                let getAnswer =  this.autoAnswer(index);
-                  return  getAnswer; 
-                  
-                }
-            ,
-
-                
-
-              
-                 filteredContacts(key) {
-                  //  function filter(array, key) {
-                      for(let i = 0; i<this.contacts.length;i++){
-                         //this.filtered = this.contacts[i].name;
-                        // this.finded= this.filtered[i]
-                         if(key.includes(this.contacts[i].name)){
-                             this.filtered.push(this.key)
-                             return this.filtered
-                         }
-
-                          console.log(this.filtered)
-                         console.log(key)
-                         // console.log(this.finded)
-
-
+                        if(this.myMsgs.length > 0){
+                            this.contacts[index].messages.push({date, hours, text, status});
+                            this.myMsgs = '';
                         }
-
-                           /*  if(key.includes(this.contacts[i].name)) {
-                                filtered.push(this.contacts[i].name)
-                            } */
-                      }
+                    let getAnswer =  this.autoAnswer(index);
+                    return  getAnswer; 
+                  
+                        }
                     }
-                    
+                                
         })
     }
 

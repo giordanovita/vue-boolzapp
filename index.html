@@ -23,6 +23,7 @@
         <div class="left-side">
             <div class="my-profile">
                 <img src="img/profileimg.jpg" alt=""><!-- immagine del profilo -->
+                <h3>Giordano</h3>
                 <ul>
                     <li><i class="fas fa-circle-notch"></i></li>
                     <li><i class="fas fa-comment-alt"></i></li>
@@ -37,8 +38,8 @@
             </div>
 
             <div class="search-contact">
-                <i @click="filteredContacts(search)" class="fas fa-search"></i>
-                <input type="text" v-model='search'  @keyup.enter="filteredContacts(search)"  placeholder="" >
+                <i @click="filteredContacts" class="fas fa-search"></i>
+                <input type="text" v-model='search'  @keyup.enter="filteredContacts"  placeholder="" >
             </div>
             <div class="contact-list">
                 <ul>
@@ -64,8 +65,17 @@
             </div>
 
         </div>
+        <div v-show='intro' class="intro">
+           
+                <img src="img/intro.png" alt="">
+                <span class='main-intro-text'>Mantieni il tuo telefono connesso</span>
+                <span> WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati collega il telefono al Wi-Fi.</span>
+         
 
-        <div class="right-side">
+        </div>
+
+        <div v-show='convcontent' class="right-side">
+           
             <div class="up-band">
                 <ul>
                     <li class="chat-preview" v-for='(items,index) in contacts' @click='chooseChat(index)'>
@@ -92,12 +102,6 @@
                  
                 
                 
-
-
-
-                
-
-                
             </div>
             <div class="douwn-band">
                 <i   class="far fa-grin-alt"></i>
@@ -109,7 +113,7 @@
 
         </div>
             
-
+    </div>
             </div>
       </div>
 
