@@ -43,18 +43,20 @@
             </div>
             <div class="contact-list">
                 <ul>
-                   
-                     <li class="chat-preview" v-if="items.name.toLowerCase().includes(search) "
-                      v-for='(items,index) in contacts' @click='chooseChat(index)'>
-                        <img v-bind:src="items.avatar"></img>
+                    <li class="chat-preview"  
+                    v-for='(item,index) in filteredContacts' @click='chooseChat(item)'>
+
+                         <img v-bind:src="item.avatar"></img>
                         <span class="minicont">
-                            <span class="name">{{items.name}}</span>
+                            <span class="name">{{item.name}}</span>
                             <span class="message" >
-                                {{items.messages[items.messages.length -1].text.slice(0, 25)}}
+                                {{item.messages[item.messages.length -1].text.slice(0, 25)}}
+
                                 
-                                <span v-if="items.messages[items.messages.length -1].text.length > 20">...</span>
+                                
+                                <span v-if="item.messages[item.messages.length -1].text.length > 20">...</span>
                             </span>
-                            <span  class="date">{{(items.messages[(items.messages.length)-1].hours)||(items.messages[0].date.slice(0,5))}}</span> 
+                            <span  class="date">{{(item.messages[(item.messages.length)-1].hours)||(item.messages[0].date.slice(0,5))}}</span> 
 
                            </span> 
                             
@@ -79,20 +81,35 @@
            
             <div class="up-band">
                 <ul>
-                    <li class="chat-preview" v-for='(items,index) in contacts' @click='chooseChat(index)'>
+                    <li class="chat-preview-up" @click='chooseChat(item)'>
                         <img v-bind:src="avatarSelected"></img>
                         <span class="minicont">
-                          <span class="name">{{nameSelected}}</span>
-                             <span class="date">{{[items.messages.length].date}}</span> 
+                          <span class="name">{{nameSelected}} </span>
+                          <span  class="date-up">Ultimo messaggio: 
+                            {{(contacts[selectedChat].messages[(contacts[selectedChat].messages.length)-1].hours)||
+                            contacts[selectedChat].messages[(contacts[selectedChat].messages.length-1)].date.slice(0,5)}}
+                            </span> 
+
+                              <span class="online">Online
+                              </span>
+                        </span>
+
+                        <span class="icon-up">
+                            <i class="fas fa-video"></i>
+                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </span>
                     </li>
                 </ul>
             </div>
             <div class="conv">
 
-                <span class="message-conv"  v-for="elem in contacts[selectedChat].messages " >
+                <span class="message-conv"   v-for="elem in contacts[selectedChat].messages " >
                     <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
                         <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}}</span>
+                        <span class="tick">
+                            <i class="fas fa-check-double"></i>
+                        </span>
                     </span>
                     <span class="message-chat" v-else>{{elem.text}}
                          <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}} </span>

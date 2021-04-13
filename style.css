@@ -64,7 +64,7 @@ header{
 
 }
 
-.my-profile img, .chat-preview img{
+.my-profile img, .chat-preview img, .chat-preview-up img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -86,6 +86,8 @@ header{
 .my-profile i{
     color: rgb(110, 110, 110);
     padding: 0 8px;
+    font-size: 25px;
+
 }
 
 .notify{
@@ -149,8 +151,6 @@ header{
     border-bottom: 1px solid darkgrey;
     border-radius: 8px;
     display:flex;
-
-    /* background-color: rgb(254, 254, 254); */
 }
 
 
@@ -174,8 +174,8 @@ header{
 .up-band{
     width: 100%;
     height: 70px;
-    display: flex;
     background-color: rgb(42, 46, 49);
+    position: relative;
     
 }
 
@@ -209,8 +209,7 @@ header{
     width: 100%;
     overflow-y: auto;
     background: url('http://forums.crackberry.com/attachments/blackberry-10-wallpapers-f308/137432d1361639896t-z10-wallpaper-set-z10-music.jpg');
-/*     background-image: url(img/bg-conv.jpg);
- */}
+ }
 
 .message-conv {
     float: left;
@@ -255,6 +254,13 @@ header{
 
 }
 
+.date-up{
+    color: rgb(135, 135, 135);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
 .intro{
     width: 75%;
     height: 100%;
@@ -264,7 +270,6 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 10%;
 }
 
 .intro img{
@@ -278,13 +283,70 @@ header{
     padding: 15px 0;
     color: rgb(200, 203, 206);
 
-}/* rgb(200, 203, 206) */
+}
 
 .intro span:last-child{
     text-align: center;
     color: rgb(122, 127, 131);
+    padding: 0 10%;
 }
 
+.tick {
+    margin-left: 2px;
+    width: 16px;
+    color: rgb(79, 195, 247);
+    align-self: flex-end;
+    margin-left: 5px;
+
+  }
+  
+   .tick i:last-of-type{
+    animation-name: mymove;
+    animation-duration: 2s; 
+
+  }
+  
+
+  @keyframes mymove {
+    
+    1%{ color: rgb(110, 110, 110);
+       }
+    40%{ transform: rotateY(180deg);
+        transform: rotateY(180deg);}
+    100%{ transform: rotateY(0);
+            transform: rotateY(0);
+            color: rgb(79, 195, 247);
+        }
+  }
+
+  .online{
+      /* margin-top: 7px; */
+      color: rgb(110, 110, 110);
+  }
+
+  .chat-preview-up{
+        height: 60px;
+        margin:10px 0;
+        font-size: 18px;
+        display:flex; 
+    }
+
+    .icon-up{
+        position: absolute;
+        right: 20px;
+        top: calc(50% - 15px);
+        font-size: 25px;
+    }
+
+    .icon-up i{
+        padding: 0 8px;
+        color: rgb(110, 110, 110);
+
+    }
+
+    i:hover{
+        color: rgb(19, 27, 34);
+    }
 
   
 

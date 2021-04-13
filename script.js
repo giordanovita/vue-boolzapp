@@ -93,19 +93,30 @@ function boolZapp(){
                     'nameSelected':'',
                     'avatarSelected':'',
                     'selectedChat':0,
-                    'searchContact':'',
                     'myMsgs':'',
                     'sendMessages':[],
-                    'msg': '',
                     'search':'',
                     'convcontent':false,
                     'intro':true
                     
                 },
-
+     
+                computed:{
+                    filteredContacts: function(index) {
+                        let target = this.search.toLowerCase();
+                        const filtered =this.contacts.filter(elem=> {
+                            if(elem.name.toLowerCase().includes(target)){
+                                return elem;
+                            }
+                        });
+                        return filtered;
+                    },  
+                },
                
             methods:{
-                 chooseChat:function(index){
+
+                 chooseChat:function(el){
+                     const index= this.contacts.indexOf(el);
                      this.convcontent=true;
                      this.intro=false;
                      this.selectedChat=index;
@@ -126,8 +137,8 @@ function boolZapp(){
                     let moment = new Date();
                     let date = `${moment.getDate()}/${('0'+moment.getMonth() + 1)}/${moment.getFullYear().toString().slice(2)}`;  
                     let minutes = moment.getMinutes();
-                         if(minutes.length<2){
-                            return minutes= minutes+'0'
+                        if(minutes.length<2){
+                            return minutes='0'+ minutes;
                         } 
                         console.log(minutes)
                     let hours = `${moment.getHours()}:${minutes}`;
@@ -146,17 +157,18 @@ function boolZapp(){
                             console.log( getRandomAnswer,text)
                          },1500) 
                     }
+                    
                 }, 
 
                 enterMsgs: function (index) {
                     let moment = new Date();
                     let date = `${moment.getDate()}/${'0'+(moment.getMonth() + 1)}/${moment.getFullYear().toString().slice(2)}`;  
-                    let minutes = moment.getMinutes();
-                        if(minutes.length<2){
-                            return minutes= minutes+'0';
-                        }
-                        console.log(minutes)
+                    let minutes =  moment.getMinutes();
                     let hours = `${moment.getHours()}:${minutes}`;
+                     if(minutes<10){
+                         minutes = '0'+ minutes;
+                     }
+
     
                     let text = this.myMsgs;
                     let status = 'sent';
@@ -166,9 +178,12 @@ function boolZapp(){
                             this.myMsgs = '';
                         }
                     let getAnswer =  this.autoAnswer(index);
+                    
                     return  getAnswer; 
                   
-                        }
+                        },
+
+                        
                     }
                                 
         })
