@@ -23,7 +23,7 @@
         <div class="left-side">
             <div class="my-profile">
                 <img src="img/profileimg.jpg" alt=""><!-- immagine del profilo -->
-                <h3>Giordano</h3>
+                <h3>Giordano 😎</h3>
                 <ul>
                     <li><i class="fas fa-circle-notch"></i></li>
                     <li><i class="fas fa-comment-alt"></i></li>
@@ -39,7 +39,7 @@
 
             <div class="search-contact">
                 <i class="fas fa-search"></i>
-                <input type="text" v-model='search'    placeholder="" >
+                <input type="text" v-model='search'    placeholder="Cerca un contatto" >
             </div>
             <div class="contact-list">
                 <ul>
@@ -85,13 +85,11 @@
                         <img v-bind:src="avatarSelected"></img>
                         <span class="minicont">
                           <span class="name">{{nameSelected}} </span>
-                          <span  class="date-up">Ultimo messaggio: 
-                            {{(contacts[selectedChat].messages[(contacts[selectedChat].messages.length)-1].hours)||
-                            contacts[selectedChat].messages[(contacts[selectedChat].messages.length-1)].date.slice(0,5)}}
-                            </span> 
-
-                              <span class="online">Online
-                              </span>
+                              <span class="online">Online</span>
+                              <span  class="date-up">Ultimo messaggio: 
+                                    {{(contacts[selectedChat].messages[(contacts[selectedChat].messages.length)-1].hours)||
+                                    contacts[selectedChat].messages[(contacts[selectedChat].messages.length-1)].date.slice(0,5)}}
+                              </span> 
                         </span>
 
                         <span class="icon-up">
@@ -106,14 +104,20 @@
 
                 <span class="message-conv"   v-for="elem in contacts[selectedChat].messages " >
                     <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
-                        <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}}</span>
+                        <span  class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}}</span>
                         <span class="tick">
                             <i class="fas fa-check-double"></i>
                         </span>
                     </span>
                     <span class="message-chat" v-else>{{elem.text}}
-                         <span class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}} </span>
-
+                         <span @click='showPopDel' class="date-chat">
+                             {{(elem.hours)||(elem.date.slice(0,5))}} 
+                         </span>
+                         <div v-if='popdel' class='pop-del'>
+                             <ul>
+                                 <li>Cancella messaggio</li>
+                             </ul>
+                         </div>
                     </span>
                     
                  </span>
@@ -123,7 +127,7 @@
             </div>
             <div class="douwn-band">
                 <i   class="far fa-grin-alt"></i>
-                <input v-model='myMsgs' @keyup.enter="enterMsgs(selectedChat)" type="text">
+                <input v-model='myMsgs' @keyup.enter="enterMsgs(selectedChat)" type="text" placeholder="Scrivi un messaggio">
                 <i @click='enterMsgs(selectedChat)'  class="fas fa-microphone"></i>
             </div>
 

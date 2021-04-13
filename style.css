@@ -71,6 +71,10 @@ header{
     margin-left: 10px;
 }
 
+.my-profile h3{
+  color:   rgb(200, 203, 206);
+}
+
  
 .my-profile ul{
     text-align: right;
@@ -92,9 +96,21 @@ header{
 
 .notify{
     background-color: rgb(19, 27, 34);
-
-    font-size: 23px;
+    color: rgb(135, 135, 135);
+    font-size: 20px;
     padding: 20px 0;
+}
+
+.notify:hover{
+    background-color: rgb(9, 81, 113);
+    border-radius: 15px;
+    color: rgb(144, 176, 192);
+}
+
+.notify i{
+    padding:10px;
+    border-radius: 100%;
+    background-color:rgb(48, 54, 57) ;
 }
 
 .search-contact{
@@ -114,6 +130,7 @@ header{
     height: 45px;
     width: 100%;
     border-radius: 25px;
+    border:none;
     font-size: 18px;
     padding: 0 10px 0 50px;
     margin-bottom: 10px;
@@ -211,6 +228,24 @@ header{
     background: url('http://forums.crackberry.com/attachments/blackberry-10-wallpapers-f308/137432d1361639896t-z10-wallpaper-set-z10-music.jpg');
  }
 
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 100%;
+   }
+   ::-webkit-scrollbar-thumb {
+    background:  rgb(135, 135, 135);
+
+    border-radius: 10px;
+   }
+   ::-webkit-scrollbar-thumb:hover{
+    background: rgb(48, 54, 57);
+   }
+   ::-webkit-scrollbar-track{
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: inset 7px 10px 12px #f0f0f0;
+   } 
+
 .message-conv {
     float: left;
     color: #000000;
@@ -299,6 +334,14 @@ header{
     margin-left: 5px;
 
   }
+
+  .pop-del{
+      justify-self: flex-end;
+      width: 100px;
+      height: 60px;
+      background-color: white;
+      padding:0 10px;
+  }
   
    .tick i:last-of-type{
     animation-name: mymove;
@@ -348,6 +391,22 @@ header{
         color: rgb(19, 27, 34);
     }
 
+  /* custom scrollbar */
+/* ::-webkit-scrollbar {
+    width: 5px;
+  }
   
+  ::-webkit-scrollbar-track {
+    background:rgb(197, 195, 196);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background:rgb(128, 128, 128);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background:red;
+  }
 
   
+ */
