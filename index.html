@@ -68,17 +68,17 @@
             </div>
 
         </div>
+  <!-- schermata iniziale -->      
         <div v-show='intro' class="intro">
            
                 <img src="img/intro.png" alt="">
                 <span class='main-intro-text'>Mantieni il tuo telefono connesso</span>
                 <span> WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati collega il telefono al Wi-Fi.</span>
-         
-
         </div>
 
         <div v-show='convcontent' class="right-side">
-           
+
+ <!-- visualizzazione contatto con cui si comunica -->
             <div class="up-band">
                 <ul>
                     <li class="chat-preview-up" @click='chooseChat(item)'>
@@ -101,10 +101,11 @@
                 </ul>
             </div>
             <div class="conv">
-
+<!-- corpo della conversazione -->
                 <span class="message-conv"   v-for="elem in contacts[selectedChat].messages " >
                     <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
-                        <span  class="date-chat">{{(elem.hours)||(elem.date.slice(0,5))}}</span>
+                        <span @click='showPopDel' class="date-chat">
+                            {{(elem.hours)||(elem.date.slice(0,5))}}</span>
                         <span class="tick">
                             <i class="fas fa-check-double"></i>
                         </span>
@@ -113,6 +114,7 @@
                          <span @click='showPopDel' class="date-chat">
                              {{(elem.hours)||(elem.date.slice(0,5))}} 
                          </span>
+  <!-- finestra delete -->       
                          <div v-if='popdel' class='pop-del'>
                              <ul>
                                  <li>Cancella messaggio</li>
@@ -122,9 +124,8 @@
                     
                  </span>
                  
-                
-                
             </div>
+ <!--  sezione inserimento nuovo messaggio  -->         
             <div class="douwn-band">
                 <i   class="far fa-grin-alt"></i>
                 <input v-model='myMsgs' @keyup.enter="enterMsgs(selectedChat)" type="text" placeholder="Scrivi un messaggio">
