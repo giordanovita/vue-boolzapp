@@ -13,19 +13,19 @@ function boolZapp(){
                             date: '10/01/2020 15:30:55',
                             text: 'Hai portato a spasso il cane?',
                             status: 'sent',
-                            visible: true,
+                            
                             },
                             {
                             date: '10/01/2020 15:50:00',
                             text: 'Ricordati di dargli da mangiare',
                             status: 'sent',
-                            visible: true,
+                            
                             },
                             {
                             date: '10/01/2020 16:15:22',
                             text: 'Tutto fatto!',
                             status: 'received',
-                            visible: true,
+                            
                             }
                     ],
                 },
@@ -37,20 +37,18 @@ function boolZapp(){
                             date: '20/03/2020 16:30:00',
                             text: 'Ciao come stai?',
                             status: 'sent',
-                            visible: true,
+                            
                             },
                             {
                             date: '20/03/2020 16:30:55',
                             text: 'Bene grazie! Stasera ci vediamo?',
                             status: 'received',
-                            visible: true
-                            },
+                                                        },
                             {
                             date: '20/03/2020 16:35:00',
                             text: 'Mi piacerebbe ma devo andare a fare la spesa.',
                             status: 'sent',
-                            visible: true
-                            }
+                                                        }
                     ],
                 },
                 {
@@ -105,8 +103,10 @@ function boolZapp(){
                     'search':'',
                     'convcontent':false,
                     'intro':true,
-                    'popdel':false,
-                    'msgSelected':0
+                    'popdel':{
+                                index:false,
+                                show:false
+                             },
                     
                 },
 
@@ -138,7 +138,9 @@ function boolZapp(){
                      this.selectedChat=index;
                      this.nameSelected  = this.contacts[index].name;
                      this.avatarSelected = this.contacts[index].avatar;
-                    
+
+                      this.popdel.index=false;
+                      this.popdel.show=false;
                   
                  }, 
                   autoAnswer: function (index) {
@@ -192,32 +194,24 @@ function boolZapp(){
                          return i;
                     },
 
-                   /*  showPop:function(index){
-                        this.popdel=true
-
-                    },
-
-                    hidePop:function(index){
-                            this.popdel=false
-                    }, */
-
-                    showPopDel:function(){
-                       this.popdel=true
-
-                        //const index= this.contacts.indexOf(el);
-                        const index= this.contacts[this.selectedChat].messages; //accedo ai messaggi della chat selezionata
-                        let superIndex= index[this.msgSelected].visible//accedo allo al visible del singolo mess 
-                        console.log(superIndex)
-                        this.popdel=true
-                        /* if(this.contacts[this.selectedChat].messages[this.msgSelected].visible=true){
-                            
-                        }else{
-                            return this.contacts[this.selectedChat].messages[this.msgSelected].visible=true, this.popdel=true
-
-                        } */
+                   
+                    showPopDel:function(index){
                        
-                        
+                        if(this.popdel.index==index){
+                            this.popdel.show=!this.popdel.show;
+                        }else{
+                            this.popdel.index=index;
+                            this.popdel.show=true;
+                        }
                     }, 
+
+                    deleter:function(index){
+
+                      const signal= this.contacts[this.selectedChat].messages 
+                      signal.splice(index,1)
+                      this.popdel.show=!this.popdel.show;
+                    },
+                    
 
                   
                     }

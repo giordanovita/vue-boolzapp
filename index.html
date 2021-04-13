@@ -102,25 +102,30 @@
             </div>
             <div class="conv">
 <!-- corpo della conversazione -->
-                <span class="message-conv"   v-for="elem in contacts[selectedChat].messages " >
+                <span class="message-conv"   v-for="(elem,index) in contacts[selectedChat].messages " >
                     <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
-                        <span @click='showPopDel' class="date-chat">
+                        <span @click='showPopDel(index)' class="date-chat">
                             {{(elem.hours)||(elem.date.slice(0,5))}}</span>
                         <span class="tick">
                             <i class="fas fa-check-double"></i>
                         </span>
                     </span>
+                    
+                    
                     <span class="message-chat" v-else>{{elem.text}}
-                         <span @click='showPopDel' class="date-chat">
+                         <span @click='showPopDel(index)' class="date-chat">
                              {{(elem.hours)||(elem.date.slice(0,5))}} 
                          </span>
-  <!-- finestra delete -->       
-                         <div v-if='popdel' class='pop-del'>
-                             <ul>
-                                 <li>Cancella messaggio</li>
-                             </ul>
-                         </div>
-                    </span>
+                    </span>    
+  <!-- finestra delete --> 
+                    <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
+                        <ul>
+                            <li @click='deleter(index)'>Cancella messaggio</li>
+                        </ul>
+                    </span>      
+                                            
+                    
+                   
                     
                  </span>
                  

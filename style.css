@@ -336,12 +336,9 @@ header{
   }
 
   .pop-del{
-      justify-self: flex-end;
-      width: 100px;
-      height: 60px;
-      background-color: white;
-      padding:0 10px;
-  }
+    color: white;
+}
+  
   
    .tick i:last-of-type{
     animation-name: mymove;
