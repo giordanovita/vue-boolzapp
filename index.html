@@ -115,12 +115,13 @@
                         <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
                             <ul>
                                 <li @click='deleter(index)'>Cancella messaggio</li>
+                                <li>Info</li>
                             </ul>
                         </span>
                     </span>
                     
                     
-                    <span class="message-chat" v-else>{{elem.text}}
+                    <span  class="message-chat" v-else>{{elem.text}}
                          <span @click='showPopDel(index)' class="date-chat">
                              {{(elem.hours)||(elem.date.slice(0,5))}} 
                          </span>
@@ -128,6 +129,10 @@
                          <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
                             <ul>
                                 <li @click='deleter(index)'>Cancella messaggio</li>
+                                <li @click='showInfo' >Info
+                                    <span  v-show='info'>{{(elem.date)}}</span>
+                                </li>
+
                             </ul>
                          </span> 
                     </span>    

@@ -215,6 +215,7 @@ function boolZapp(){
                                 index:false,
                                 show:false
                              },
+                    'info':false,
                     
                 },
 
@@ -331,7 +332,14 @@ function boolZapp(){
                     turnBack:function(){
                         this.convcontent=false, this.intro=true
                   
-                    }
+                    },
+
+                     showInfo:function(index){
+                        this.info=true;
+                    },
+                  
+                   
+                
                     
                 }                 
         })
