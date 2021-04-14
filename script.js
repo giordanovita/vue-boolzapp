@@ -7,7 +7,7 @@ function boolZapp(){
             'contacts' : [
                 {
                 name: 'Michele',
-                avatar: "img/tired.jpg",
+                avatar: "img/sdentato.jpg",
                 messages: [
                             {
                             date: '10/01/2020 15:30:55',
@@ -31,7 +31,7 @@ function boolZapp(){
                 },
                 {
                 name: 'Fabio',
-                avatar: "img/smile.jpg",
+                avatar: "img/tutta salute.jpg",
                 messages: [
                             {
                             date: '20/03/2020 16:30:00',
@@ -78,13 +78,121 @@ function boolZapp(){
                 },
                 {
                 name: 'Luisa',
-                avatar: "img/whatsapp-munch.jpg",
+                avatar: "img/minchiaguaddi.jpg",
                 messages: [
                             {
                             date: '10/01/2020 15:30:55',
                             text: 'Lo sai che ha aperto una nuova pizzeria?',
                             status: 'sent',
                             visible: false,
+                            },
+                            {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Franchino',
+                avatar: "img/beltipo.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Non ti hanno ancora chiamato al circo?',
+                            status: 'sent',
+                            visible: false,
+                            },
+                            {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Mario',
+                avatar: "img/beltipo2.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent',
+                            visible: false,
+                            },
+                            {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Luigino',
+                avatar: "img/beltipo3.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent',
+                            visible: false,
+                            },
+                            {
+                            date: '10/01/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Maria',
+                avatar: "img/calma.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent',
+                            visible: false,
+                            },
+                            {
+                            date: '30/11/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Francesco',
+                avatar: "img/jim.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent',
+                            visible: false,
+                            },
+                            {
+                            date: '15/01/2020 15:50:00',
+                            text: 'Si, ma preferirei andare al cinema',
+                            status: 'received',
+                            visible: true,
+                            }
+                            ],
+                            },
+                            {
+                name: 'Guido',
+                avatar: "img/whatsapp-munch.jpg",
+                messages: [
+                            {
+                            date: '10/01/2020 15:30:55',
+                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            status: 'sent',
+                            visible: true,
                             },
                             {
                             date: '10/01/2020 15:50:00',
@@ -131,6 +239,7 @@ function boolZapp(){
                
             methods:{
 
+                //funzione che permette la scelta della chat nella lista delle conversazioni
                  chooseChat:function(el){
                      this.convcontent=true;
                      this.intro=false;
@@ -143,6 +252,8 @@ function boolZapp(){
                       this.popdel.show=false;
                   
                  }, 
+
+                 //funzione che genera una serie di risposte automatiche casuali, lanciata da enterMsgs()
                   autoAnswer: function (index) {
                    
                     let moment = new Date();
@@ -150,7 +261,7 @@ function boolZapp(){
                     let minutes = this.formatminuts(moment.getMinutes());
                     let hours = `${moment.getHours()}:${minutes}`;
     
-                    let textArr=[ 'ok!' , 'ho capito', 'va bene!', 'perchè?', 'hahahaha', 'non ho capito'];
+                    let textArr=[ 'ok!' , 'ho capito', 'va bene!', 'perchè?', 'hahahaha', 'non ho capito','no problem!', 'in che senso?'];
                     let getRandomAnswer = Math.floor(Math.random()*(textArr.length));
                     let text = textArr[getRandomAnswer];
 
@@ -164,11 +275,13 @@ function boolZapp(){
                             setTimeout(function(){
                                 intervalTool.push({date, hours,text, status, visible});
                                 console.log( getRandomAnswer,text)
-                            },1500) 
+                            },2000) 
                         }
                     
-                }, 
+                },
 
+                //funzione che permette l'inserimento e l'invio di messaggi nella conversazione selezionata,
+                //questa funzione comprende l'esecuzione della funzione di risposta automatica
                 enterMsgs: function (index) {
                     let moment = new Date();
                     let date = `${moment.getDate()}/${'0'+(moment.getMonth() + 1)}/${moment.getFullYear().toString().slice(2)}`;  
@@ -178,7 +291,7 @@ function boolZapp(){
                     let status = 'sent';
                     let visible = true;
     
-                        if(this.myMsgs.length > 0){
+                        if((this.myMsgs.length > 0)&&(this.myMsgs=!'')){
                             this.contacts[index].messages.push({date, hours, text, status, visible});
                             this.myMsgs = '';
                         }
@@ -187,6 +300,7 @@ function boolZapp(){
                   
                         },
 
+                    //funzione di formattazione orario 
                     formatminuts:function(i){
                         if(i<10){
                             i='0'+i;
@@ -194,7 +308,7 @@ function boolZapp(){
                          return i;
                     },
 
-                   
+                   //funzione che mostra e nasconde l'azione delete
                     showPopDel:function(index){
                        
                         if(this.popdel.index==index){
@@ -205,17 +319,21 @@ function boolZapp(){
                         }
                     }, 
 
+                    //funzione che permette di eliminare il messaggio selezionato
                     deleter:function(index){
 
                       const signal= this.contacts[this.selectedChat].messages 
                       signal.splice(index,1)
                       this.popdel.show=!this.popdel.show;
                     },
-                    
 
+                    //torna all'intro
+                    turnBack:function(){
+                        this.convcontent=false, this.intro=true
                   
                     }
-                                
+                    
+                }                 
         })
     }
 

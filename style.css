@@ -13,13 +13,17 @@ body{
 .container{
     width: 100%;
     height: 100vh;
+    background-image: url(img/bg-conv.jpg) ;
+    
+
+
     
 }
 
 header{
     width: 100%;
     height: 10%;
-    background: rgb(0, 191, 165);
+    background: rgba(0, 10, 10, 0.2);
 }
 
 .sub-container{
@@ -140,8 +144,9 @@ header{
 }
 
 .contact-list{
-    height: calc(100% - 180px);
+    height: calc(100% - 225px);
     overflow-y:auto;
+    overflow-x:hidden;
     background-color: rgb(19, 27, 34);
 
 }
@@ -155,10 +160,6 @@ header{
     height: auto;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid darkgrey;
-
-
-
 }
 
 .chat-preview{
@@ -168,6 +169,12 @@ header{
     border-bottom: 1px solid darkgrey;
     border-radius: 8px;
     display:flex;
+}
+
+.chat-preview-up>i{
+    font-size: 47px;
+    padding: 0 11px;
+    color: rgb(110, 110, 110);
 }
 
 
@@ -271,6 +278,12 @@ header{
       background:rgb(192, 241, 153);
   }
 
+  .sent:after, .message-conv:after{
+      content: '';
+      clear: both;
+      display: table;
+  }
+
   
 
   .date-chat{
@@ -335,9 +348,24 @@ header{
 
   }
 
-  .pop-del{
+  .pop-del ul{
+    display:flex;
+
+
+ }
+
+.pop-del li{
     color: white;
-}
+    background-color:rgb(122, 127, 131,0.5);
+    padding: 7px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+ }
+
+ 
+
+ 
+
   
   
    .tick i:last-of-type{
@@ -386,6 +414,7 @@ header{
 
     i:hover{
         color: rgb(19, 27, 34);
+        cursor: pointer;
     }
 
   /* custom scrollbar */

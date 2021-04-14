@@ -19,7 +19,8 @@
 <body>
     <div id="app" class="container">
      <header></header>
-       <div class="sub-container">
+     <div class="sub-container">
+           <!-- contenitore parte sinistra(il mio profilo,input di ricerca,lista contatti) -->
         <div class="left-side">
             <div class="my-profile">
                 <img src="img/profileimg.jpg" alt=""><!-- immagine del profilo -->
@@ -37,10 +38,13 @@
                 <span>Get notified of new messages</span>
             </div>
 
+            <!-- sezione ricerca contatto -->
             <div class="search-contact">
                 <i class="fas fa-search"></i>
-                <input type="text" v-model='search'    placeholder="Cerca un contatto" >
+                <input type="text" v-model='search' placeholder="Cerca un contatto" >
             </div>
+
+            <!-- sezione lista contatti -->
             <div class="contact-list">
                 <ul>
                     <li class="chat-preview"  
@@ -52,23 +56,19 @@
                             <span class="message" >
                                 {{item.messages[item.messages.length -1].text.slice(0, 25)}}
 
-                                
-                                
                                 <span v-if="item.messages[item.messages.length -1].text.length > 20">...</span>
                             </span>
-                            <span  class="date">{{(item.messages[(item.messages.length)-1].hours)||(item.messages[0].date.slice(0,5))}}</span> 
-
+                            <span  class="date">
+                                {{(item.messages[(item.messages.length)-1].hours)||
+                                    (item.messages[0].date.slice(0,5))}}</span> 
                            </span> 
-                            
-
-
                         </span>
                     </li>
                 </ul>
             </div>
 
         </div>
-  <!-- schermata iniziale -->      
+        <!-- schermata iniziale (intro) -->      
         <div v-show='intro' class="intro">
            
                 <img src="img/intro.png" alt="">
@@ -76,12 +76,14 @@
                 <span> WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per ridurre l'utilizzo dei dati collega il telefono al Wi-Fi.</span>
         </div>
 
+        <!-- inizio sezione conversazione mostrata al click di un contatto nella lista contatti -->
         <div v-show='convcontent' class="right-side">
 
- <!-- visualizzazione contatto con cui si comunica -->
+            <!-- visualizzazione contatto con cui si comunica -->
             <div class="up-band">
                 <ul>
                     <li class="chat-preview-up" @click='chooseChat(item)'>
+                        <i @click='turnBack' class="fas fa-chevron-left"></i>
                         <img v-bind:src="avatarSelected"></img>
                         <span class="minicont">
                           <span class="name">{{nameSelected}} </span>
@@ -101,13 +103,19 @@
                 </ul>
             </div>
             <div class="conv">
-<!-- corpo della conversazione -->
+            <!-- corpo della conversazione -->
                 <span class="message-conv"   v-for="(elem,index) in contacts[selectedChat].messages " >
                     <span  class="message-chat sent" v-if="elem.status=='sent'">{{elem.text}}
                         <span @click='showPopDel(index)' class="date-chat">
                             {{(elem.hours)||(elem.date.slice(0,5))}}</span>
                         <span class="tick">
                             <i class="fas fa-check-double"></i>
+                        </span>
+                         <!-- finestra delete --> 
+                        <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
+                            <ul>
+                                <li @click='deleter(index)'>Cancella messaggio</li>
+                            </ul>
                         </span>
                     </span>
                     
@@ -116,17 +124,13 @@
                          <span @click='showPopDel(index)' class="date-chat">
                              {{(elem.hours)||(elem.date.slice(0,5))}} 
                          </span>
+                         <!-- finestra delete --> 
+                         <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
+                            <ul>
+                                <li @click='deleter(index)'>Cancella messaggio</li>
+                            </ul>
+                         </span> 
                     </span>    
-  <!-- finestra delete --> 
-                    <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
-                        <ul>
-                            <li @click='deleter(index)'>Cancella messaggio</li>
-                        </ul>
-                    </span>      
-                                            
-                    
-                   
-                    
                  </span>
                  
             </div>
@@ -141,12 +145,7 @@
 
         </div>
             
-    </div>
-            </div>
-      </div>
-
-
-
+     </div>
     </div>
     
 </body>
