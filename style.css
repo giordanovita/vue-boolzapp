@@ -416,22 +416,4 @@ header{
         color: rgb(122, 127, 131,0.5) 
     }
 
-  /* custom scrollbar */
-/* ::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background:rgb(197, 195, 196);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background:rgb(128, 128, 128);
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background:red;
-  }
-
-  
- */
+ 
