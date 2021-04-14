@@ -115,7 +115,9 @@
                         <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
                             <ul>
                                 <li @click='deleter(index)'>Cancella messaggio</li>
-                                <li>Info</li>
+                                <li @click='showInfo' >Info
+                                    <span  v-show='info'>{{(elem.date)}}</span>
+                                </li>
                             </ul>
                         </span>
                     </span>
