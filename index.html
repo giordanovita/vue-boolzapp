@@ -114,6 +114,7 @@
                          <!-- finestra delete --> 
                         <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
                             <ul>
+                                <li class="mini-arrow"  @click='turnBackPop'> <i class="fas fa-chevron-left"></i></li>
                                 <li @click='deleter(index)'>Cancella messaggio</li>
                                 <li @click='showInfo' >Info
                                     <span  v-show='info'>{{(elem.date)}}</span>
@@ -130,6 +131,7 @@
                          <!-- finestra delete --> 
                          <span v-if='(popdel.index==index)&&(popdel.show)' class='pop-del'>
                             <ul>
+                                <li class="mini-arrow"  @click='turnBackPop'> <i class="fas fa-chevron-left "></i></li>
                                 <li @click='deleter(index)'>Cancella messaggio</li>
                                 <li @click='showInfo' >Info
                                     <span  v-show='info'>{{(elem.date)}}</span>

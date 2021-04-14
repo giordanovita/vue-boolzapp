@@ -337,6 +337,11 @@ function boolZapp(){
                      showInfo:function(index){
                         this.info=true;
                     },
+
+                    turnBackPop:function(){
+                        this.info=false;
+                        this.popdel.show=!this.popdel.show;
+                    }
                   
                    
                 

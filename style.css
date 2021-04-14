@@ -361,12 +361,6 @@ header{
     border-radius: 15px;
     cursor: pointer;
  }
-
- 
-
- 
-
-  
   
    .tick i:last-of-type{
     animation-name: mymove;
@@ -415,6 +409,11 @@ header{
     i:hover{
         color: rgb(19, 27, 34);
         cursor: pointer;
+    }
+
+     ul .mini-arrow{
+        background-color: transparent;
+        color: rgb(122, 127, 131,0.5) 
     }
 
   /* custom scrollbar */
